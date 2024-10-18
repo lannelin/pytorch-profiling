@@ -1,7 +1,6 @@
 import yaml
 from lightning.pytorch.cli import LightningCLI, SaveConfigCallback
 from lightning.pytorch.loggers import Logger
-from pl_bolts.datamodules import CIFAR10DataModule
 
 
 # saves a copy of the cli config to the logger (wandb)
@@ -16,10 +15,10 @@ class SaveConfigRemoteCallback(SaveConfigCallback):
 def cli_main():
 
     cli = LightningCLI(  # noqa: F841
-        datamodule_class=CIFAR10DataModule,
         save_config_callback=SaveConfigRemoteCallback,
         save_config_kwargs={"overwrite": True},
-        auto_configure_optimizers=True,
+        auto_configure_optimizers=False,
+        subclass_mode_data=True,
     )
 
 

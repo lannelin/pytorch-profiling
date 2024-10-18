@@ -160,6 +160,8 @@ cython_debug/
 # model weights
 weights/
 
-# cifar data
-cifar-10-python.tar.gz
-cifar-10-batches-py/
+# data
+data/
+
+wandb/
+profiling/*/checkpoints/
