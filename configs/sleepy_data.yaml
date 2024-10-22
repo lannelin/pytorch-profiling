@@ -1,0 +1,21 @@
+data:
+  class_path: pytorch_profiling.example.data.Flowers102DataModule
+  init_args:
+    data_dir: ./data
+    num_workers: 0
+    batch_size: 32
+    train_transform: &train_transform
+      class_path: torchvision.transforms.Compose
+      init_args:
+        transforms:
+          - class_path: torchvision.transforms.Resize
+            init_args:
+              size: [224, 224]
+          - class_path: torchvision.transforms.ToTensor
+          - class_path: torchvision.transforms.Normalize # imagenet mean and std
+            init_args:
+              mean: [0.485, 0.456, 0.406]
+              std: [0.229, 0.224, 0.225]
+          - class_path: pytorch_profiling.utils.transforms.SleepTransform
+            init_args:
+              sleep_time: 0.1
