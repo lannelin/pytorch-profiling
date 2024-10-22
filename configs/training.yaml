@@ -94,9 +94,6 @@ data:
             init_args:
               mean: [0.485, 0.456, 0.406]
               std: [0.229, 0.224, 0.225]
-          - class_path: pytorch_profiling.utils.transforms.SleepTransform
-            init_args:
-              sleep_time: 1
 
 
     val_transform: *train_transform
