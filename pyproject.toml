@@ -9,6 +9,7 @@ dependencies = [
     "torchvision==0.18.1",
     "wandb==0.17.2",
     "jsonargparse[signatures]>=4.27.7",
+    "scipy==1.14.1",
 ]
 
 [tool.black]
