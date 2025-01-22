@@ -8,13 +8,10 @@ trainer:
   precision: null
 
   logger:
-    class_path: lightning.pytorch.loggers.wandb.WandbLogger
+    class_path: lightning.pytorch.loggers.tensorboard.TensorBoardLogger
     init_args:
-      entity: __replace__
-      project: profiling
+      save_dir: logs
       name: __replace__
-      log_model: false
-      sync_tensorboard: true
 
   callbacks:
     - class_path: LearningRateMonitor
@@ -23,10 +20,8 @@ trainer:
 
     - class_path: pytorch_profiling.utils.callbacks.SavePyTorchProfilerToWandbCallback
 
-  profiler:
+  profiler: # will use tboard logger dir by default
     class_path: lightning.pytorch.profilers.PyTorchProfiler
-    init_args:
-      dirpath: profiler/
 
   log_every_n_steps: 5
   fast_dev_run: false
