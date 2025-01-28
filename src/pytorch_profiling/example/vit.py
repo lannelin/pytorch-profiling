@@ -1,6 +1,7 @@
 # adapted from https://lightning.ai/docs/pytorch/stable/notebooks/lightning_examples/cifar10-baseline.html # noqa: E501
 import logging
 from collections import OrderedDict
+from typing import Union
 
 import lightning as L
 import torch
@@ -16,7 +17,6 @@ logger = logging.Logger(__name__)
 def create_model(
     num_classes: int,
 ) -> torchvision.models.VisionTransformer:
-
     model = torchvision.models.vit_b_16(
         weights=torchvision.models.ViT_B_16_Weights.IMAGENET1K_V1
     )
@@ -38,7 +38,7 @@ class ViTB16(L.LightningModule):
         freeze_embedding: bool = False,
         optimizer: OptimizerCallable = torch.optim.Adam,
         scheduler: LRSchedulerCallable = torch.optim.lr_scheduler.ReduceLROnPlateau,  # noqa: E501
-        scheduler_config: dict | None = None,
+        scheduler_config: Union[dict, None] = None,
     ):
         super().__init__()
 

@@ -1,4 +1,5 @@
 from collections.abc import Callable
+from typing import Union
 
 import lightning as L
 from torch.utils.data import DataLoader
@@ -10,10 +11,10 @@ class Flowers102DataModule(L.LightningDataModule):
         self,
         data_dir: str,
         batch_size: int = 32,
-        train_transform: Callable | None = None,
-        val_transform: Callable | None = None,
-        test_transform: Callable | None = None,
-        target_transform: Callable | None = None,
+        train_transform: Union[Callable, None] = None,
+        val_transform: Union[Callable, None] = None,
+        test_transform: Union[Callable, None] = None,
+        target_transform: Union[Callable, None] = None,
         num_workers: int = 0,
         persistent_workers: bool = False,
         download: bool = False,
@@ -30,7 +31,6 @@ class Flowers102DataModule(L.LightningDataModule):
         self.download = download
 
     def setup(self, stage: str):
-
         if stage == "test" or stage is None:
             self.ds_test = Flowers102(
                 root=self.data_dir,
