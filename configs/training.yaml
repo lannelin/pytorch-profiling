@@ -13,6 +13,14 @@ trainer:
       save_dir: logs
       name: __replace__
 
+    # class_path: lightning.pytorch.loggers.wandb.WandbLogger
+    # init_args:
+    #   entity: __replace__
+    #   project: profiling
+    #   name: __replace__
+    #   log_model: false
+    #   sync_tensorboard: true
+
   callbacks:
     - class_path: LearningRateMonitor
       init_args:
