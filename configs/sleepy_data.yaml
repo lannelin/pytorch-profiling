@@ -1,7 +1,7 @@
 data:
   class_path: pytorch_profiling.example.data.Flowers102DataModule
   init_args:
-    data_dir: /bask/projects/v/vjgo8416-training25/profiling_shared/data
+    data_dir: /bask/projects/v/vjgo8416-hpc2511/profiling_shared/data
     num_workers: 0
     batch_size: 32
     train_transform: &train_transform
