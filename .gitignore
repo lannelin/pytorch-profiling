@@ -165,4 +165,5 @@ data/
 
 wandb/
 profiling/*/checkpoints/
-log/
+logs/
+profiler/
