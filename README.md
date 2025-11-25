@@ -168,10 +168,10 @@ print(output.argmax(dim=1)) # meaningless
 ## DataLoader::num_workers
 
 ```bash
-python runner.py fit -c configs/training.yaml –c configs/sleepy_data.yaml  --trainer.logger.name 0workers --trainer.max_epochs 2  --data.num_workers 0
-python runner.py fit -c configs/training.yaml –c configs/sleepy_data.yaml  --trainer.logger.name 1workers --trainer.max_epochs 2  --data.num_workers 1
-python runner.py fit -c configs/training.yaml –c configs/sleepy_data.yaml  --trainer.logger.name 2workers --trainer.max_epochs 2  --data.num_workers 2
-python runner.py fit -c configs/training.yaml –c configs/sleepy_data.yaml  --trainer.logger.name 16workers --trainer.max_epochs 2  --data.num_workers 16
+python runner.py fit -c configs/training.yaml --trainer.logger.name 0workers --trainer.max_epochs 2  --data.num_workers 0
+python runner.py fit -c configs/training.yaml --trainer.logger.name 1workers --trainer.max_epochs 2  --data.num_workers 1
+python runner.py fit -c configs/training.yaml --trainer.logger.name 2workers --trainer.max_epochs 2  --data.num_workers 2
+python runner.py fit -c configs/training.yaml --trainer.logger.name 16workers --trainer.max_epochs 2  --data.num_workers 16
 ```
 
 
