@@ -11,7 +11,7 @@ Goal: train a ViT on Flowers102 dataset, diagnosing situations where we are IO b
 
 ```bash
 # on baskerville
-srun --export=USER,HOME,PATH,TERM --account= vjgo8416-hpc2511 --qos=turing --nodes=1-1 --cpus-per-gpu=36 --gres=gpu:1 --time=1:0:0 --pty /bin/bash
+srun --export=USER,HOME,PATH,TERM --account vjgo8416-hpc2511 --qos=turing --nodes=1-1 --cpus-per-gpu=36 --reservation vjgo8416-hpc2511 --gres=gpu:1 --time=1:0:0 --pty /bin/bash
 # wait...
 
 ```bash
