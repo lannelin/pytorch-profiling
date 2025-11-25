@@ -97,13 +97,20 @@ transform = transforms.Compose(
 )
 
 device="cuda:0"
-model = ViTB16.load_from_checkpoint("logs/test/version_0/checkpoints/epoch=1-step=64.ckpt", num_classes=102).to(device)
+# note map_location
+model = ViTB16.load_from_checkpoint("logs/test/version_0/checkpoints/epoch=1-step=64.ckpt", num_classes=102, map_location="cpu")
 model.eval()
-ims = transform(im).unsqueeze(0).to(device) # transform data, unsqueeze, put on device
+ims = transform(im).unsqueeze(0) # transform data, unsqueeze, put on device
 
 # uncomment below for bfloat16
-#model = model.bfloat16() # model to bfloat16
-#ims = ims.bfloat16() # convert data to bfloat16
+# model = model.bfloat16() # model to bfloat16
+# ims = ims.bfloat16() # convert data to bfloat16
+# uncomment below for float16
+# model = model.half() # model to fp16
+# ims = ims.half() # data to fp16
+
+model = model.to(device)
+ims = ims.to(device)
 
 with torch.inference_mode():
     output = model(ims)
@@ -131,7 +138,7 @@ import torch
 from pytorch_profiling.example.vit import ViTB16
 
 device="cuda:0"
-n_images = 2
+n_images = 64
 model = ViTB16(num_classes=102, freeze_embedding=True).to(device)
 model.eval()
 ims = torch.randn(n_images, 3, 224, 224).to(device)
@@ -146,7 +153,7 @@ import torch
 from pytorch_profiling.example.vit import ViTB16
 
 device="cuda:0"
-n_images = 2
+n_images = 64
 model = ViTB16(num_classes=102, freeze_embedding=True).to(device)
 model.eval()
 ims = torch.randn(n_images, 3, 224, 224).to(device)
